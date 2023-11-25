@@ -1,0 +1,15 @@
+export const colors = {
+  royalBlue: '#354585',
+  darkBlue: '#111E4B',
+  mediumBlue: '#2D64AC',
+  matteBlack: '#1A1A1A',
+  mildBlack: '#16191C',
+  thinBlack: '#2B2937',
+  lightBlack: '#4A4B59',
+  vantaBlack: '#08090B',
+  darkGrey: '#67696A',
+  gold: '#CDAA59',
+  matteWine: '#572C46',
+  transparent: '#00000000',
+  white: '#FFFFFF',
+};

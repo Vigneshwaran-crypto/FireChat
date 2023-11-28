@@ -32,13 +32,10 @@ const Router = () => {
     return (
       <Tab.Navigator
         screenOptions={{
-          tabBarActiveTintColor: colors.vantaBlack,
+          tabBarActiveTintColor: colors.gold,
           tabBarInactiveTintColor: colors.darkGrey,
           tabBarShowLabel: false,
           tabBarHideOnKeyboard: true,
-          // tabBarActiveBackgroundColor: colors.transparent,
-          // tabBarInactiveBackgroundColor: colors.transparent,
-          // tabBarBackground: backGround,
           tabBarStyle: styles.tabBarStyle,
         }}>
         <Tab.Screen
@@ -92,7 +89,7 @@ const Router = () => {
   return (
     //Navigation container contains all screen as Stack data structure
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="homeTab">
+      <Stack.Navigator initialRouteName="splash">
         <Stack.Screen
           name="splash"
           component={Splash}
@@ -120,10 +117,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.transparent,
-    // borderWidth: 1,
-    // height: width * 0.08,
-    // width: width * 0.08,
-    // borderRadius: width * 0.08,
   },
   tabBarStyle: {
     // borderWidth: 1,
@@ -132,24 +125,22 @@ const styles = StyleSheet.create({
     zIndex: 0,
     borderTopWidth: 0,
     height: width * 0.14,
+    borderStyle: 'dotted',
   },
   roundView: shade => ({
-    // borderWidth: 1,
     height: width * 0.11,
     width: width * 0.11,
     borderRadius: width * 0.08,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 10,
-    zIndex: 10,
+    elevation: 1,
+    zIndex: 1,
     shadowOpacity: 0.53,
     shadowRadius: 13.97,
-    shadowOffset: {height: 10, width: 0},
-    backgroundColor: shade ? colors.gold : colors.thinBlack,
+    shadowOffset: {height: 1, width: 1},
     shadowColor: shade ? colors.gold : colors.vantaBlack,
   }),
   tabBackground: {
-    // borderWidth: 1,
     flex: 1,
   },
 });

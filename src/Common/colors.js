@@ -12,4 +12,5 @@ export const colors = {
   matteWine: '#572C46',
   transparent: '#00000000',
   white: '#FFFFFF',
+  mildPurple: '#5D68F9',
 };

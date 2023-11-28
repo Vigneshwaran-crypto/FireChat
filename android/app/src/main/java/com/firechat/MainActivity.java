@@ -1,4 +1,4 @@
-package com.firechat;
+package com.firechat.vignesh;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "956446420599",
+    "project_id": "firechat-1daf6",
+    "storage_bucket": "firechat-1daf6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956446420599:android:a64152b6d2fa284dbde072",
+        "android_client_info": {
+          "package_name": "com.firechat.vignesh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjdHVqUYjlPjP9qfaJsBsIPO0ivnHgtPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

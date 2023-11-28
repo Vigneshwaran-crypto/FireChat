@@ -1,6 +1,6 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
-
+apply plugin: 'com.google.gms.google-services' //firebase config
 
 react {
 
@@ -19,9 +19,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.firechat"
+    namespace "com.firechat.vignesh"
     defaultConfig {
-        applicationId "com.firechat"
+        applicationId "com.firechat.vignesh"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -64,6 +64,10 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    //firebase config 
+    implementation platform('com.google.firebase:firebase-bom:32.6.0')
+    implementation 'com.google.firebase:firebase-analytics'
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

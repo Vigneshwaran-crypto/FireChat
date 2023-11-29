@@ -1,4 +1,5 @@
-import {Alert, Platform, ToastAndroid} from 'react-native';
+import {Alert, BackHandler, Platform, ToastAndroid} from 'react-native';
+import * as RootNavigation from '../Router/RootNavigation';
 export const LOG = (message, val) => {
   if (val) {
     console.log(message, val);
@@ -20,5 +21,14 @@ export const Toast = msg => {
     ToastAndroid.showWithGravity(msg, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
   } else {
     Alert.alert(msg);
+  }
+};
+
+export const isValidMail = value => {
+  let emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+  if (emailReg.test(value.trim()) === true) {
+    return true;
+  } else {
+    return false;
   }
 };

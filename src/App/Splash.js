@@ -3,31 +3,31 @@ import React, {useEffect, useState} from 'react';
 import {colors} from '../Common/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import MatIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {
-  textFontBold,
-  textFontLight,
-  textFontMedium,
-  textFontRegular,
-} from '../Common/styles';
+import {textFontSemiBoldForm} from '../Common/styles';
 import {Dimensions} from 'react-native';
 import LottieView from 'lottie-react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const {height, width} = Dimensions.get('window');
+
 const Splash = () => {
-  const animePack = new Animated.Value(0);
-  const viewScale = new Animated.Value(0);
+  const navigation = useNavigation();
+
+  const iconRotateAnime = new Animated.Value(0);
+  const iconSizeAnime = new Animated.Value(0);
   const textOpa = new Animated.Value(0);
+  const curAeroPos = new Animated.ValueXY({x: 0, y: 0});
 
   const [showLoad, setShowLoad] = useState(false);
 
   useEffect(() => {
-    Animated.timing(viewScale, {
+    Animated.timing(iconSizeAnime, {
       toValue: 1,
       duration: 1500,
       easing: Easing.linear,
       useNativeDriver: true,
     }).start(() => {
-      Animated.timing(animePack, {
+      Animated.timing(iconRotateAnime, {
         toValue: 1,
         duration: 800,
         easing: Easing.linear,
@@ -43,6 +43,26 @@ const Splash = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (showLoad) {
+      setTimeout(() => {
+        Animated.timing(curAeroPos, {
+          toValue: {x: width, y: 0},
+          duration: 1500,
+          easing: Easing.linear,
+          useNativeDriver: true,
+        }).start(() => {
+          // navigation.navigate('login');
+
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'login'}],
+          });
+        });
+      }, 2000);
+    }
+  }, [showLoad]);
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -57,12 +77,12 @@ const Splash = () => {
               {
                 transform: [
                   {
-                    rotateY: animePack.interpolate({
+                    rotateY: iconRotateAnime.interpolate({
                       inputRange: [0, 1],
                       outputRange: ['0deg', '360deg'],
                     }),
                   },
-                  {scale: viewScale},
+                  {scale: iconSizeAnime},
                 ],
               },
             ]}>
@@ -74,16 +94,18 @@ const Splash = () => {
           </Animated.Text>
 
           <View style={styles.progressView}>
-            <LottieView
-              source={require('../../assets/lottieJson/paperRocket.json')}
-              loop
-              autoPlay
-              duration={2000}
-              style={[
-                styles.lottieAnimeStyle,
-                {display: showLoad ? 'flex' : 'none'},
-              ]}
-            />
+            <Animated.View style={{transform: [{translateX: curAeroPos.x}]}}>
+              <LottieView
+                source={require('../../assets/lottieJson/paperRocket.json')}
+                loop
+                autoPlay
+                duration={2000}
+                style={[
+                  styles.lottieAnimeStyle,
+                  {display: showLoad ? 'flex' : 'none'},
+                ]}
+              />
+            </Animated.View>
           </View>
         </View>
       </LinearGradient>
@@ -110,7 +132,7 @@ const styles = StyleSheet.create({
 
   appNameText: {
     color: colors.royalBlue,
-    fontFamily: textFontRegular,
+    fontFamily: textFontSemiBoldForm,
     fontSize: width * 0.05,
   },
 

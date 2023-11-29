@@ -16,6 +16,9 @@ import Home from '../Screen/HomeTab/Home';
 import Chat from '../Screen/HomeTab/Chat';
 import Profile from '../Screen/HomeTab/Profile';
 import {colors} from '../Common/colors';
+import LogIn from '../Screen/HomeTab/Auth/LogIn';
+import {navigationRef} from './RootNavigation';
+import Register from '../Screen/HomeTab/Auth/Register';
 
 const {height, width} = Dimensions.get('window');
 
@@ -88,13 +91,31 @@ const Router = () => {
 
   return (
     //Navigation container contains all screen as Stack data structure
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator initialRouteName="splash">
         <Stack.Screen
           name="splash"
           component={Splash}
           options={{
             headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="login"
+          component={LogIn}
+          options={{
+            headerShown: false,
+            animation: 'slide_from_right',
+          }}
+        />
+
+        <Stack.Screen
+          name="register"
+          component={Register}
+          options={{
+            headerShown: false,
+            animation: 'slide_from_right',
           }}
         />
 
